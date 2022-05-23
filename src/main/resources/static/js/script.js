@@ -46,7 +46,7 @@ const salvar = () => {
 			alert("Error: " + xhr.responseText);
 		});
 	}
-	
+	mostrar();
 }
 
 
@@ -92,9 +92,10 @@ const pesquisaUserCep = () => {
 		
 		$.ajax({
 			method: "GET",
-			url: "buscaruserid",
-			data: "name=" + cadCep,
+			url: "listartudo",
+			data: "usuarios=" + cadCep,
 			success: function(response){ 
+				console.log(response);
 				$("#id").val(response.id);
 				$("#nome").val(response.nome);
 			 	$("#idade").val(response.idade);
@@ -104,7 +105,7 @@ const pesquisaUserCep = () => {
 				$("#bairro").val(response.bairro);
 				$("#cidade").val(response.cidade);
 				$("#estado").val(response.estado);
-				}
+			}
 		}).fail(function(xhr, status, errorThrown){
 			alert("Erro ao buscar: " + xhr.responseText);
 		});
@@ -144,4 +145,38 @@ const Deletar = () => {
 
 const mostrar = () => {
 	
+	$.ajax({
+			method: "GET",
+			url: "listartudo",
+			data: "usuarios",
+			success: function(response){ 
+				
+				$('#tabelaResultado > tbody > tr').remove();
+				for(var i = 0; i < response.length; i++){
+					$('#tabelaResultado > tbody').append(
+						'<tr><td>'
+							+response[i].id+
+						'</td><td>'
+							+response[i].nome+
+						'</td><td>'
+							+response[i].idade+
+						'</td><td>'
+							+response[i].sexo+
+						'</td><td>'
+							+response[i].cep+ 
+						'</td><td>'
+							+response[i].endereco+ 
+						'</td><td>'
+							+response[i].bairro+
+						'</td><td>'
+							+response[i].cidade+
+						'</td><td>'
+							+response[i].estado+
+						'</td></tr>');
+				}
+			}
+			
+		}).fail(function(xhr, status, errorThrown){
+			alert("Erro ao Mostrar lista: " + xhr.responseText);
+		});
 }

@@ -58,28 +58,35 @@
 		        <button type="button" class="btn btn-primary" onclick="salvar()">Salvar</button>
 		        <button type="reset" class="btn btn-warning">Limpar</button>
 		        <button type="button" class="btn btn-danger" onclick="Deletar()">Deletar</button>
+		        <button type="button" class="btn btn-secondary" onclick="mostrar()">Listar</button>
 		        <button type="button" class="btn btn-success" onclick="pesquisaUser()">Pesquisar</button>
 		       	<input type="text" id="idPesquisa" value=""  placeholder="Pesquisa por ID" maxlength="5" style="max-width:150px;">
-		       	<input type="text" id="cepPesquisa" value="" placeholder="Pesquisa por CEP" maxlength="8" style="max-width:150px;">
+		       <button type="button" onclick="pesquisaUserCep()" class="btn">Pesquisa CEP</button>
+		       <input type="text" id="cepPesquisa" value=""  placeholder="Pesquisa por CEP" maxlength="8" style="max-width:150px;">
         	</form>
 		</div>
-		<div class="list">
+		<div class="list" style="padding:40px 0;">
 			<h1 style="text-align:center;">Lista de Funcionarios</h1>
 			<table class="table table-striped" id="tabelaResultado">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Nome</th>
-                        <th>Sobrenome</th>
-                        <th>Telefone</th>
-                        <th>E-mail</th>
+                        <th>Idade</th>
+                        <th>Sexo</th>
+                        <th>Cep</th>
+                        <th>Endereço</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
-                <tbody id="t-body"></tbody>
+                <tbody id="tbody"></tbody>
 			</table>
 		</div>
 		<div class="rodape">
 		<footer>
-			<p>teste de empresa</p>
+			
 		</footer>
 		</div>
 	</div>
